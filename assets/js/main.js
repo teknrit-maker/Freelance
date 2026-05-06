@@ -93,14 +93,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const updateDirectionToggle = (dir) => {
+    if (!rtlToggle) {
+      return;
+    }
+
+    const isRtl = dir === "rtl";
+    const label = isRtl
+      ? "Switch to left-to-right layout"
+      : "Switch to right-to-left layout";
+
+    rtlToggle.setAttribute("aria-label", label);
+    rtlToggle.setAttribute("title", label);
+  };
+
   const applyDirection = (dir) => {
     html.setAttribute("dir", dir);
+    updateDirectionToggle(dir);
   };
 
   const savedDir = localStorage.getItem(DIR_KEY);
-  if (savedDir) {
-    applyDirection(savedDir);
-  }
+  applyDirection(savedDir || html.getAttribute("dir") || "ltr");
 
   if (rtlToggle) {
     rtlToggle.addEventListener("click", () => {

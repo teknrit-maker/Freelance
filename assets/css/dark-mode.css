@@ -1309,6 +1309,13 @@ body.dark-mode .pricing-card ul li{
 color:var(--muted);
 }
 
+body.dark-mode .spotlight-badge{
+background:rgba(11,11,11,0.82);
+border-color:rgba(255,255,255,0.16);
+color:var(--text);
+backdrop-filter:blur(10px);
+}
+
 body.dark-mode .comparison-table th{
 background:#1a1a1a;
 color:var(--text);
